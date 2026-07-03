@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Плюши — мягкие игрушки ручной работы: кролики, мишки и котики из безопасных тканей, подарочная упаковка и фото перед отправкой."
+    />
+    <title data-i18n="meta.title">Плюши — подарок, который обнимают каждый день</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&family=Nunito:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+
+    <link rel="stylesheet" href="/assets/css/variables.css" />
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/components.css" />
+    <link rel="stylesheet" href="/assets/css/sections.css" />
+    <link rel="stylesheet" href="/assets/css/animations.css" />
+  </head>
+
+  <body>
+    <!-- Мягкая зернистость для премиального ощущения ткани -->
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Индикатор прогресса чтения страницы -->
+    <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
+
+    <!-- ====== SVG-спрайт с переиспользуемыми иконками и иллюстрациями ====== -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <!-- Иконка-сердечко -->
+        <symbol id="i-heart" viewBox="0 0 24 24">
+          <path d="M12 21s-7-4.35-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 4.5 2.5C11.5 6 13 5 15 5c3.5 0 5 4 3.5 7-2.5 4.65-9.5 9-9.5 9z"/>
+        </symbol>
+
+        <!-- Иконка-звёздочка -->
+        <symbol id="i-star" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M12 2l2.6 7.3 7.4.6-5.6 4.9 1.7 7.2L12 18l-6.1 4 1.7-7.2L2 9.9l7.4-.6L12 2z"/>
+        </symbol>
+
+        <!-- Иконка-стрелка -->
+        <symbol id="i-arrow" viewBox="0 0 24 24">
+          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/>
+        </symbol>
+
+        <!-- Иконка sparkle (4-конечная звезда) -->
+        <symbol id="i-sparkle" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M12 2c.5 4.5 3.5 7.5 8 8-4.5.5-7.5 3.5-8 8-.5-4.5-3.5-7.5-8-8 4.5-.5 7.5-3.5 8-8z"/>
+        </symbol>
+
+        <!-- Облачко -->
+        <symbol id="i-cloud" viewBox="0 0 100 70">
+          <path fill="currentColor" d="M30 60 Q5 60 5 40 Q5 22 25 22 Q28 8 45 8 Q62 8 65 22 Q90 22 90 42 Q90 60 70 60 Z" opacity="0.6"/>
+        </symbol>
+
+        <!-- Цветок / логотип -->
+        <symbol id="i-flower" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M12 2c-1.5 0-2.8 1-3.2 2.5C7.5 4 6 5 5.5 6.5c-.7 2 .3 4.2 2.2 5-.3 1-.2 2.1.3 3 1 1.8 3.2 2.5 5 1.7.9 1 2.3 1.5 3.7 1.2 2-.4 3.3-2.2 3.3-4.2 0-.4 0-.8-.1-1.2 1.5-1 2.2-2.9 1.6-4.7-.5-1.5-2-2.5-3.6-2.5-.1 0-.2 0-.3 0C14.8 3 13.5 2 12 2zm0 3c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1z"/>
+          <circle cx="12" cy="12" r="2.5" fill="currentColor" opacity="0.6"/>
+        </symbol>
+
+        <!-- Нить / ручная работа -->
+        <symbol id="i-thread" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21c4-4 8-12 18-12"/>
+          <circle cx="7.5" cy="9.5" r="2.5"/>
+          <path d="M8 16c1.5-2.5 4-6 8-7"/>
+        </symbol>
+
+        <!-- Лист / гипоаллергенность -->
+        <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 20A7 7 0 0 1 9.8 6.5C13.5 3 20 4 20 4s1 6.5-2.8 10.2A7 7 0 0 1 11 20z"/>
+          <path d="M12 20v-7"/>
+          <path d="M12 13l-3-3"/>
+        </symbol>
+
+        <!-- Коробка / доставка -->
+        <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+          <line x1="12" y1="22.08" x2="12" y2="12"/>
+        </symbol>
+
+        <!-- Конверт / подарочная упаковка -->
+        <symbol id="i-envelope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </symbol>
+
+        <!-- Эко / переработка -->
+        <symbol id="i-recycle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 19H4.8a2 2 0 0 1-1.7-3L6 10"/>
+          <path d="M13.8 19h2.4a2 2 0 0 0 1.7-3L16 15"/>
+          <path d="M10.2 5h3.6a2 2 0 0 1 1.7 3L12 12l-3.5-4a2 2 0 0 1 1.7-3z"/>
+        </symbol>
+
+        <!-- Пузыри / стирка -->
+        <symbol id="i-bubbles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <circle cx="8" cy="10" r="2"/>
+          <circle cx="16" cy="15" r="1.5"/>
+          <circle cx="14" cy="8" r="1"/>
+        </symbol>
+
+        <!-- Солнце / сушка -->
+        <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </symbol>
+
+        <!-- Щётка / расчёсывание -->
+        <symbol id="i-brush" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 19.5V18a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1.5"/>
+          <path d="M12 16V7"/>
+          <path d="M8 8h8"/>
+          <path d="M9 11h6"/>
+          <path d="M9.5 14h5"/>
+        </symbol>
+
+        <!-- Корзина / хранение -->
+        <symbol id="i-basket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 21h14l1-9H4l1 9z"/>
+          <path d="M8 12V7a4 4 0 0 1 8 0v5"/>
+        </symbol>
+
+        <!-- Кролик / пустая корзина -->
+        <symbol id="i-bunny" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="12" cy="18" rx="6" ry="5"/>
+          <ellipse cx="9" cy="8" rx="1.5" ry="4"/>
+          <ellipse cx="15" cy="8" rx="1.5" ry="4"/>
+          <circle cx="10" cy="16" r="1" fill="currentColor"/>
+          <circle cx="14" cy="16" r="1" fill="currentColor"/>
+          <path d="M11 18.5l1 1 1-1"/>
+        </symbol>
+
+        <!-- Закрыть -->
+        <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </symbol>
+
+        <!-- Плюс -->
+        <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </symbol>
+
+        <!-- Минус -->
+        <symbol id="i-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </symbol>
+
+        <!-- ====== Иллюстрация: Кролик ====== -->
+        <symbol id="plush-rabbit" viewBox="0 0 200 200">
+          <!-- уши -->
+          <ellipse cx="68" cy="42" rx="14" ry="34" fill="#f7b8cc" transform="rotate(-12 68 42)"/>
+          <ellipse cx="132" cy="42" rx="14" ry="34" fill="#f7b8cc" transform="rotate(12 132 42)"/>
+          <ellipse cx="68" cy="48" rx="7" ry="22" fill="#ffe8ee" transform="rotate(-12 68 48)"/>
+          <ellipse cx="132" cy="48" rx="7" ry="22" fill="#ffe8ee" transform="rotate(12 132 48)"/>
+          <!-- голова/тело -->
+          <ellipse cx="100" cy="118" rx="62" ry="58" fill="#ffd9e4"/>
+          <!-- мордочка -->
+          <ellipse cx="100" cy="130" rx="34" ry="26" fill="#fff5f8"/>
+          <!-- щёчки-румянец -->
+          <circle cx="64" cy="128" r="9" fill="#ffb8cc" opacity="0.55"/>
+          <circle cx="136" cy="128" r="9" fill="#ffb8cc" opacity="0.55"/>
+          <!-- глаза -->
+          <ellipse cx="80" cy="108" rx="6" ry="7" fill="#4a3f55"/>
+          <ellipse cx="120" cy="108" rx="6" ry="7" fill="#4a3f55"/>
+          <ellipse cx="82" cy="105" rx="2" ry="2" fill="#fff"/>
+          <ellipse cx="122" cy="105" rx="2" ry="2" fill="#fff"/>
+          <!-- носик -->
+          <path d="M95 124 Q100 130 105 124 Q102 132 100 132 Q98 132 95 124 Z" fill="#e08aa8"/>
+          <!-- ротик -->
+          <path d="M100 132 Q94 140 90 138" stroke="#a87090" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M100 132 Q106 140 110 138" stroke="#a87090" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- бантик -->
+          <path d="M100 60 L90 52 L92 64 Z" fill="#c5b3f0"/>
+          <path d="M100 60 L110 52 L108 64 Z" fill="#c5b3f0"/>
+          <circle cx="100" cy="60" r="4" fill="#9d72d1"/>
+        </symbol>
+
+        <!-- ====== Иллюстрация: Мишка ====== -->
+        <symbol id="plush-bear" viewBox="0 0 200 200">
+          <!-- ушки -->
+          <circle cx="58" cy="62" r="20" fill="#c5b3f0"/>
+          <circle cx="142" cy="62" r="20" fill="#c5b3f0"/>
+          <circle cx="58" cy="62" r="11" fill="#e3d6ff"/>
+          <circle cx="142" cy="62" r="11" fill="#e3d6ff"/>
+          <!-- голова -->
+          <circle cx="100" cy="110" r="64" fill="#e3d6ff"/>
+          <!-- мордочка -->
+          <ellipse cx="100" cy="128" rx="36" ry="28" fill="#f3ecff"/>
+          <!-- щёчки -->
+          <circle cx="62" cy="124" r="9" fill="#d4c2ff" opacity="0.6"/>
+          <circle cx="138" cy="124" r="9" fill="#d4c2ff" opacity="0.6"/>
+          <!-- глаза -->
+          <ellipse cx="80" cy="100" rx="6" ry="7" fill="#4a3f55"/>
+          <ellipse cx="120" cy="100" rx="6" ry="7" fill="#4a3f55"/>
+          <ellipse cx="82" cy="97" rx="2" ry="2" fill="#fff"/>
+          <ellipse cx="122" cy="97" rx="2" ry="2" fill="#fff"/>
+          <!-- носик -->
+          <ellipse cx="100" cy="124" rx="6" ry="5" fill="#7a5fa8"/>
+          <!-- ротик -->
+          <path d="M100 130 L100 138" stroke="#7a5fa8" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M100 138 Q94 142 92 138" stroke="#7a5fa8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M100 138 Q106 142 108 138" stroke="#7a5fa8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- бантик -->
+          <path d="M62 50 L52 42 L54 54 Z" fill="#ffd9e4"/>
+          <path d="M62 50 L72 42 L70 54 Z" fill="#ffd9e4"/>
+          <circle cx="62" cy="50" r="4" fill="#f7b8cc"/>
+        </symbol>
+
+        <!-- ====== Иллюстрация: Котик ====== -->
+        <symbol id="plush-cat" viewBox="0 0 200 200">
+          <!-- ушки -->
+          <path d="M52 70 L70 38 L84 78 Z" fill="#a5e1c5"/>
+          <path d="M148 70 L130 38 L116 78 Z" fill="#a5e1c5"/>
+          <path d="M62 68 L72 50 L80 72 Z" fill="#cdf2e2"/>
+          <path d="M138 68 L128 50 L120 72 Z" fill="#cdf2e2"/>
+          <!-- голова -->
+          <circle cx="100" cy="115" r="60" fill="#cdf2e2"/>
+          <!-- мордочка -->
+          <ellipse cx="100" cy="128" rx="32" ry="22" fill="#eaf9f1"/>
+          <!-- щёчки -->
+          <circle cx="64" cy="126" r="8" fill="#a5e1c5" opacity="0.7"/>
+          <circle cx="136" cy="126" r="8" fill="#a5e1c5" opacity="0.7"/>
+          <!-- глаза (закрытые — спящий котик) -->
+          <path d="M76 108 Q82 102 88 108" stroke="#4a3f55" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M112 108 Q118 102 124 108" stroke="#4a3f55" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- носик -->
+          <path d="M96 122 L104 122 L100 128 Z" fill="#e08aa8"/>
+          <!-- ротик -->
+          <path d="M100 128 Q96 132 92 130" stroke="#a87090" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M100 128 Q104 132 108 130" stroke="#a87090" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- усы -->
+          <line x1="62" y1="128" x2="80" y2="128" stroke="#4a3f55" stroke-width="1" opacity="0.5"/>
+          <line x1="62" y1="134" x2="80" y2="132" stroke="#4a3f55" stroke-width="1" opacity="0.5"/>
+          <line x1="138" y1="128" x2="120" y2="128" stroke="#4a3f55" stroke-width="1" opacity="0.5"/>
+          <line x1="138" y1="134" x2="120" y2="132" stroke="#4a3f55" stroke-width="1" opacity="0.5"/>
+          <!-- хвостик-бантик -->
+          <ellipse cx="62" cy="56" rx="8" ry="4" fill="#f7b8cc" transform="rotate(-30 62 56)"/>
+          <ellipse cx="62" cy="56" rx="3" ry="3" fill="#e08aa8"/>
+        </symbol>
+
+        <!-- Hero иллюстрация — большой кролик-герой с дополнительными деталями -->
+        <symbol id="hero-bunny" viewBox="0 0 320 320">
+          <!-- задняя тень -->
+          <ellipse cx="160" cy="290" rx="100" ry="14" fill="#4a3f55" opacity="0.1"/>
+          <!-- уши -->
+          <ellipse cx="108" cy="62" rx="22" ry="56" fill="#f7b8cc" transform="rotate(-12 108 62)"/>
+          <ellipse cx="212" cy="62" rx="22" ry="56" fill="#f7b8cc" transform="rotate(12 212 62)"/>
+          <ellipse cx="108" cy="72" rx="11" ry="36" fill="#ffe8ee" transform="rotate(-12 108 72)"/>
+          <ellipse cx="212" cy="72" rx="11" ry="36" fill="#ffe8ee" transform="rotate(12 212 72)"/>
+          <!-- тело -->
+          <ellipse cx="160" cy="208" rx="86" ry="80" fill="#ffd9e4"/>
+          <!-- лапки -->
+          <ellipse cx="100" cy="270" rx="22" ry="14" fill="#ffd9e4"/>
+          <ellipse cx="220" cy="270" rx="22" ry="14" fill="#ffd9e4"/>
+          <ellipse cx="100" cy="270" rx="10" ry="6" fill="#ffe8ee"/>
+          <ellipse cx="220" cy="270" rx="10" ry="6" fill="#ffe8ee"/>
+          <!-- мордочка -->
+          <ellipse cx="160" cy="220" rx="48" ry="36" fill="#fff5f8"/>
+          <!-- румянец -->
+          <circle cx="108" cy="218" r="13" fill="#ffb8cc" opacity="0.55"/>
+          <circle cx="212" cy="218" r="13" fill="#ffb8cc" opacity="0.55"/>
+          <!-- глаза -->
+          <ellipse cx="132" cy="194" rx="9" ry="11" fill="#4a3f55"/>
+          <ellipse cx="188" cy="194" rx="9" ry="11" fill="#4a3f55"/>
+          <ellipse cx="135" cy="190" rx="3" ry="3.5" fill="#fff"/>
+          <ellipse cx="191" cy="190" rx="3" ry="3.5" fill="#fff"/>
+          <!-- носик -->
+          <path d="M152 218 Q160 226 168 218 Q164 230 160 230 Q156 230 152 218 Z" fill="#e08aa8"/>
+          <!-- ротик -->
+          <path d="M160 230 Q150 244 144 240" stroke="#a87090" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M160 230 Q170 244 176 240" stroke="#a87090" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- бантик на ухе -->
+          <g transform="translate(120 38) rotate(-15)">
+            <path d="M0 0 L-12 -8 L-10 6 Z" fill="#c5b3f0"/>
+            <path d="M0 0 L12 -8 L10 6 Z" fill="#c5b3f0"/>
+            <circle cx="0" cy="0" r="4.5" fill="#9d72d1"/>
+          </g>
+          <!-- сердечко на груди -->
+          <g transform="translate(160 254)">
+            <path d="M0 4 C-6 -2 -10 0 -10 4 C-10 8 0 14 0 14 C0 14 10 8 10 4 C10 0 6 -2 0 4 Z" fill="#e08aa8" opacity="0.85"/>
+          </g>
+        </symbol>
+      </defs>
+    </svg>
+
+    <header class="header" id="top">
+      <div class="container header__inner">
+        <a href="#top" class="logo" aria-label="Плюши — на главную">
+          <span class="logo__mark" aria-hidden="true">
+            <svg width="20" height="20" aria-hidden="true"><use href="#i-flower"/></svg>
+          </span>
+          <span class="logo__text">Плюши</span>
+        </a>
+
+        <nav class="nav" aria-label="Главное меню">
+          <button
+            class="nav__toggle"
+            type="button"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+            data-i18n-aria="nav.openMenu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+          <ul class="nav__list">
+            <li><a href="#top" class="nav__link" data-i18n="nav.home">Главная</a></li>
+            <li><a href="#catalog" class="nav__link" data-i18n="nav.catalog">Каталог</a></li>
+            <li><a href="#reviews" class="nav__link" data-i18n="nav.reviews">Отзывы</a></li>
+            <li><a href="#about" class="nav__link" data-i18n="nav.about">О нас</a></li>
+            <li><a href="#tips" class="nav__link" data-i18n="nav.tips">Советы</a></li>
+            <li><a href="#contacts" class="nav__link" data-i18n="nav.contacts">Контакты</a></li>
+          </ul>
+        </nav>
+
+        <div class="lang-switcher" role="group" aria-label="Выбор языка">
+          <button class="lang-switcher__btn" type="button" data-lang="ru" aria-pressed="true" title="Русский">RU</button>
+          <button class="lang-switcher__btn" type="button" data-lang="en" aria-pressed="false" title="English">EN</button>
+        </div>
+
+        <button class="cart-button" type="button" aria-label="Открыть корзину" data-i18n-aria="nav.cart">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path
+              d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.5L20.5 8H6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <circle cx="10" cy="20" r="1.3" fill="currentColor" />
+            <circle cx="17" cy="20" r="1.3" fill="currentColor" />
+          </svg>
+          <span class="cart-button__badge" data-cart-count>0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============== HERO ============== -->
+      <section class="hero">
+        <div class="hero__bg" aria-hidden="true">
+          <span class="hero__blob hero__blob--1"></span>
+          <span class="hero__blob hero__blob--2"></span>
+          <span class="hero__blob hero__blob--3"></span>
+          <span class="hero__blob hero__blob--4"></span>
+        </div>
+
+        <div class="sparkles" aria-hidden="true">
+          <span class="sparkle"><svg><use href="#i-sparkle"/></svg></span>
+          <span class="sparkle"><svg><use href="#i-sparkle"/></svg></span>
+          <span class="sparkle"><svg><use href="#i-sparkle"/></svg></span>
+          <span class="sparkle"><svg><use href="#i-sparkle"/></svg></span>
+          <span class="sparkle"><svg><use href="#i-sparkle"/></svg></span>
+          <span class="sparkle"><svg><use href="#i-sparkle"/></svg></span>
+          <span class="sparkle"><svg><use href="#i-sparkle"/></svg></span>
+          <span class="sparkle"><svg><use href="#i-sparkle"/></svg></span>
+        </div>
+
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <span class="hero__eyebrow" data-reveal-text>
+              <span class="hero__eyebrow-dot"></span>
+              <span data-i18n="hero.eyebrow">ручная мастерская игрушек</span>
+            </span>
+
+            <h1 class="hero__title">
+              <span class="hero__title-line" data-text-reveal data-i18n="hero.title1">Подарок, который</span>
+              <span class="hero__title-line" data-text-reveal>
+                <span class="hero__title-em" data-i18n="hero.titleEm">обнимают</span>
+                <span data-i18n="hero.title2">каждый день</span>
+              </span>
+            </h1>
+
+            <p class="hero__subtitle" data-fade-up data-i18n="hero.subtitle">
+              Шьём кроликов, мишек и котиков вручную: безопасные материалы, ровные швы,
+              подарочная упаковка и фото готовой игрушки перед отправкой.
+            </p>
+
+            <div class="hero__actions" data-fade-up>
+              <a href="#catalog" class="btn btn--primary btn--icon btn--lg">
+                <span data-i18n="hero.ctaPrimary">Выбрать игрушку</span>
+                <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+              <a href="#about" class="btn btn--ghost btn--lg" data-i18n="hero.ctaSecondary">Как мы шьём</a>
+            </div>
+
+            <div class="hero__trust" data-fade-up>
+              <div class="hero__trust-mark" aria-hidden="true">
+                <svg width="22" height="22"><use href="#i-star"/></svg>
+              </div>
+              <div class="hero__trust-copy">
+                <p>
+                  <strong data-i18n="hero.trustTitle">Фото готовой игрушки перед отправкой</strong>
+                  <span data-i18n="hero.trustText">проверяем швы, упаковку и только потом отдаём заказ в доставку</span>
+                </p>
+                <ul class="hero__trust-list" aria-label="Гарантии мастерской">
+                  <li><svg width="14" height="14" aria-hidden="true"><use href="#i-leaf"/></svg><span data-i18n="hero.assureMaterials">гипоаллергенные ткани</span></li>
+                  <li><svg width="14" height="14" aria-hidden="true"><use href="#i-envelope"/></svg><span data-i18n="hero.assurePackaging">подарочная упаковка</span></li>
+                  <li><svg width="14" height="14" aria-hidden="true"><use href="#i-thread"/></svg><span data-i18n="hero.assureNoFactory">без конвейера</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__art" data-tilt>
+            <div class="hero__plate"></div>
+            <img
+              class="hero__hero-bunny"
+              src="/assets/images/hero-bunny.jpg"
+              alt="Настоящий кролик — символ мягкости мастерской «Плюши»"
+              width="520"
+              height="520"
+              loading="eager"
+            />
+
+            <div class="hero__float-card hero__float-card--reviews" aria-hidden="true">
+              <svg width="18" height="18"><use href="#i-star"/></svg>
+              <div>
+                <strong data-i18n="hero.floatRating">Фото</strong>
+                <span data-i18n="hero.floatReviews">перед отправкой</span>
+              </div>
+            </div>
+
+            <div class="hero__float-card hero__float-card--delivery" aria-hidden="true">
+              <svg width="18" height="18"><use href="#i-box"/></svg>
+              <div>
+                <strong data-i18n="hero.floatDeliveryTitle">Подарочно</strong>
+                <span data-i18n="hero.floatDeliveryText">коробка и лента</span>
+              </div>
+            </div>
+
+            <div class="hero__orbit hero__orbit--star">
+              <svg><use href="#i-star"/></svg>
+            </div>
+            <div class="hero__orbit hero__orbit--heart">
+              <svg fill="currentColor" viewBox="0 0 24 24"><use href="#i-heart"/></svg>
+            </div>
+            <div class="hero__orbit hero__orbit--cloud">
+              <svg viewBox="0 0 100 70"><use href="#i-cloud"/></svg>
+            </div>
+            <div class="hero__orbit hero__orbit--sparkle">
+              <svg><use href="#i-sparkle"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__stats-bar" data-fade-up>
+          <div class="container hero__stats-bar-inner">
+            <div class="hero__stats-bar-item">
+              <strong class="counter" data-target="5" data-suffix=" лет" data-i18n-suffix="hero.statYearsSuffix">5 лет</strong>
+              <span data-i18n="hero.statFamilies">шьём вручную</span>
+            </div>
+            <div class="hero__stats-bar-item">
+              <strong class="counter" data-target="9">9</strong>
+              <span data-i18n="hero.statModels">героев в коллекции</span>
+            </div>
+            <div class="hero__stats-bar-item">
+              <strong data-i18n="hero.statPhoto">Фото</strong>
+              <span data-i18n="hero.statYears">перед отправкой</span>
+            </div>
+            <div class="hero__stats-bar-item">
+              <strong>100%</strong>
+              <span data-i18n="hero.statHandmade">ручная работа</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== Marquee — преимущества ============== -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <!-- блок повторяется дважды — для бесшовной прокрутки -->
+          <div class="marquee__item"><svg width="22" height="22" aria-hidden="true"><use href="#i-thread"/></svg><span data-i18n="marquee.handmade">Ручная работа</span></div>
+          <span class="marquee__sep"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+          <div class="marquee__item"><svg width="22" height="22" aria-hidden="true"><use href="#i-leaf"/></svg><span data-i18n="marquee.hypoallergenic">Гипоаллергенные ткани</span></div>
+          <span class="marquee__sep"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+          <div class="marquee__item"><svg width="22" height="22" aria-hidden="true"><use href="#i-box"/></svg><span data-i18n="marquee.delivery">Фото перед отправкой</span></div>
+          <span class="marquee__sep"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+          <div class="marquee__item"><svg width="22" height="22" aria-hidden="true"><use href="#i-envelope"/></svg><span data-i18n="marquee.packaging">Подарочная упаковка</span></div>
+          <span class="marquee__sep"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+          <div class="marquee__item"><svg width="22" height="22" aria-hidden="true"><use href="#i-recycle"/></svg><span data-i18n="marquee.eco">Без конвейера</span></div>
+          <span class="marquee__sep"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+          <div class="marquee__item"><svg width="22" height="22" aria-hidden="true"><use href="#i-sparkle"/></svg><span data-i18n="marquee.experience">5 лет на рынке</span></div>
+          <span class="marquee__sep"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+
+          <div class="marquee__item"><svg width="22" height="22" aria-hidden="true"><use href="#i-thread"/></svg><span data-i18n="marquee.handmade">Ручная работа</span></div>
+          <span class="marquee__sep"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+          <div class="marquee__item"><svg width="22" height="22" aria-hidden="true"><use href="#i-leaf"/></svg><span data-i18n="marquee.hypoallergenic">Гипоаллергенные ткани</span></div>
+          <span class="marquee__sep"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+          <div class="marquee__item"><svg width="22" height="22" aria-hidden="true"><use href="#i-box"/></svg><span data-i18n="marquee.delivery">Фото перед отправкой</span></div>
+          <span class="marquee__sep"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+          <div class="marquee__item"><svg width="22" height="22" aria-hidden="true"><use href="#i-envelope"/></svg><span data-i18n="marquee.packaging">Подарочная упаковка</span></div>
+          <span class="marquee__sep"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+          <div class="marquee__item"><svg width="22" height="22" aria-hidden="true"><use href="#i-recycle"/></svg><span data-i18n="marquee.eco">Без конвейера</span></div>
+          <span class="marquee__sep"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+          <div class="marquee__item"><svg width="22" height="22" aria-hidden="true"><use href="#i-sparkle"/></svg><span data-i18n="marquee.experience">5 лет на рынке</span></div>
+          <span class="marquee__sep"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+        </div>
+      </div>
+
+      <!-- ============== CATALOG ============== -->
+      <section class="section catalog" id="catalog">
+        <div class="sparkles" aria-hidden="true">
+          <span class="sparkle"><svg><use href="#i-sparkle"/></svg></span>
+          <span class="sparkle"><svg><use href="#i-sparkle"/></svg></span>
+          <span class="sparkle"><svg><use href="#i-sparkle"/></svg></span>
+          <span class="sparkle"><svg><use href="#i-sparkle"/></svg></span>
+        </div>
+
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="eyebrow" data-i18n="catalog.eyebrow">наша коллекция</span>
+            <h2 class="section__title" data-i18n="catalog.title">Выбери того, кого хочется обнять</h2>
+            <p class="section__lead" data-i18n="catalog.lead">
+              У каждого героя есть характер, аккуратные швы и готовая подарочная подача.
+            </p>
+          </header>
+
+          <div class="catalog__proof reveal-stagger" aria-label="Гарантии мастерской">
+            <span><svg width="18" height="18" aria-hidden="true"><use href="#i-leaf"/></svg><span data-i18n="catalog.proofMaterials">безопасные материалы</span></span>
+            <span><svg width="18" height="18" aria-hidden="true"><use href="#i-star"/></svg><span data-i18n="catalog.proofPhoto">фото перед отправкой</span></span>
+            <span><svg width="18" height="18" aria-hidden="true"><use href="#i-box"/></svg><span data-i18n="catalog.proofDelivery">упаковка для подарка</span></span>
+          </div>
+
+          <div class="catalog__filters reveal" role="tablist">
+            <button class="chip is-active" data-filter="all" role="tab">
+              <span data-i18n="catalog.all">Все</span> <span class="chip__count" data-count-all>9</span>
+            </button>
+            <button class="chip" data-filter="rabbits" role="tab">
+              <span data-i18n="catalog.rabbits">Кролики</span> <span class="chip__count" data-count-rabbits>3</span>
+            </button>
+            <button class="chip" data-filter="bears" role="tab">
+              <span data-i18n="catalog.bears">Мишки</span> <span class="chip__count" data-count-bears>3</span>
+            </button>
+            <button class="chip" data-filter="cats" role="tab">
+              <span data-i18n="catalog.cats">Котики</span> <span class="chip__count" data-count-cats>3</span>
+            </button>
+          </div>
+
+          <div class="catalog__grid" data-products>
+            <div class="catalog__placeholder" data-i18n="catalog.loading">Загружаем коллекцию…</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== REVIEWS ============== -->
+      <section class="section reviews" id="reviews">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="eyebrow" data-i18n="reviews.eyebrow">тёплые слова</span>
+            <h2 class="section__title" data-i18n="reviews.title">Отзывы, которым веришь по деталям</h2>
+            <p class="section__lead" data-i18n="reviews.lead">
+              Покупатели отмечают не только милый вид, а швы, ткань, упаковку и реакцию на подарок.
+            </p>
+          </header>
+
+          <div class="reviews__slider reveal" data-reviews>
+            <button
+              class="reviews__arrow reviews__arrow--prev"
+              type="button"
+              aria-label="Предыдущий отзыв"
+              data-reviews-prev
+              data-i18n-aria="reviews.prev"
+            >
+              <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </button>
+            <div class="reviews__viewport">
+              <ul class="reviews__track" data-reviews-track></ul>
+            </div>
+            <button
+              class="reviews__arrow reviews__arrow--next"
+              type="button"
+              aria-label="Следующий отзыв"
+              data-reviews-next
+              data-i18n-aria="reviews.next"
+            >
+              <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </button>
+            <div class="reviews__dots" data-reviews-dots></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== TIPS ============== -->
+      <section class="section tips" id="tips">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="eyebrow" data-i18n="tips.eyebrow">забота</span>
+            <h2 class="section__title" data-i18n="tips.title">Советы по уходу</h2>
+            <p class="section__lead" data-i18n="tips.lead">
+              Чтобы ваш плюшевый друг оставался мягким и пушистым годами.
+            </p>
+          </header>
+
+          <div class="tips__grid reveal-stagger">
+            <article class="tip">
+              <div class="tip__icon" aria-hidden="true">
+                <svg width="26" height="26"><use href="#i-bubbles"/></svg>
+              </div>
+              <h3 class="tip__title" data-i18n="tips.washTitle">Бережная стирка</h3>
+              <p class="tip__text" data-i18n="tips.washText">
+                Деликатный режим, температура до 30°. Без отбеливателя — он
+                разрушает пастельные оттенки.
+              </p>
+            </article>
+
+            <article class="tip">
+              <div class="tip__icon" aria-hidden="true">
+                <svg width="26" height="26"><use href="#i-sun"/></svg>
+              </div>
+              <h3 class="tip__title" data-i18n="tips.dryTitle">Сушка в тени</h3>
+              <p class="tip__text" data-i18n="tips.dryText">
+                Дайте игрушке высохнуть в горизонтальном положении вдали от
+                солнца — так ткань сохранит цвет.
+              </p>
+            </article>
+
+            <article class="tip">
+              <div class="tip__icon" aria-hidden="true">
+                <svg width="26" height="26"><use href="#i-brush"/></svg>
+              </div>
+              <h3 class="tip__title" data-i18n="tips.brushTitle">Мягкое расчёсывание</h3>
+              <p class="tip__text" data-i18n="tips.brushText">
+                Раз в пару недель проходитесь щёткой для шерсти — ворс снова
+                становится пушистым.
+              </p>
+            </article>
+
+            <article class="tip">
+              <div class="tip__icon" aria-hidden="true">
+                <svg width="26" height="26"><use href="#i-basket"/></svg>
+              </div>
+              <h3 class="tip__title" data-i18n="tips.storeTitle">Сухое хранение</h3>
+              <p class="tip__text" data-i18n="tips.storeText">
+                Храните вдали от влаги и пыли. Тканевый мешочек — лучший друг
+                для долгого сна.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== ABOUT ============== -->
+      <section class="section about" id="about">
+        <div class="container about__inner">
+          <div class="about__media reveal reveal--left">
+            <div class="about__sticker about__sticker--1" aria-hidden="true">
+              <svg width="28" height="28"><use href="#i-star"/></svg>
+            </div>
+            <div class="about__sticker about__sticker--2" aria-hidden="true">
+              <svg width="26" height="26"><use href="#i-heart"/></svg>
+            </div>
+            <div class="about__sticker about__sticker--3" aria-hidden="true">
+              <svg width="24" height="24"><use href="#i-sparkle"/></svg>
+            </div>
+            <div class="about__photo">
+              <img
+                src="/assets/images/about-workshop.jpg"
+                alt="Мастерская «Плюши» — ручная работа над мягкими игрушками"
+                width="520"
+                height="520"
+                loading="lazy"
+                data-i18n-aria="about.title"
+              />
+            </div>
+          </div>
+
+          <div class="about__content reveal reveal--right">
+            <span class="eyebrow" data-i18n="about.eyebrow">о нас</span>
+            <h2 class="section__title" data-i18n="about.title">Семейная мастерская «Плюши»</h2>
+            <p data-i18n="about.p1">
+              Всё началось с маленького швейного столика на кухне и большой
+              мечты — дарить тепло. Сегодня мы — семья из четырёх человек,
+              которая шьёт каждую игрушку вручную, без конвейера и спешки.
+            </p>
+            <p data-i18n="about.p2">
+              Мы выбираем мягкие пастельные ткани, гипоаллергенные наполнители
+              и проверяем каждый шов лично. Ваш плюшевый друг приедет к вам
+              в крафтовой коробке, перевязанной шёлковой лентой.
+            </p>
+            <ul class="about__facts">
+              <li class="about__fact">
+                <strong class="counter" data-target="5" data-i18n-suffix="hero.statYearsSuffix">5 лет</strong>
+                <span data-i18n="about.years">лет любимому делу</span>
+              </li>
+              <li class="about__fact">
+                <strong class="counter" data-target="9">9</strong>
+                <span data-i18n="about.families">героев в каталоге</span>
+              </li>
+              <li class="about__fact">
+                <strong>100%</strong>
+                <span data-i18n="about.handmade">ручная работа</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== SUBSCRIBE ============== -->
+      <section class="section subscribe">
+        <div class="container subscribe__inner reveal reveal--scale">
+          <h2 class="subscribe__title" data-i18n="subscribe.title">Получайте уютные новости</h2>
+          <p class="subscribe__lead" data-i18n="subscribe.lead">
+            Новые коллекции, истории и спецпредложения — раз в две недели,
+            без спама.
+          </p>
+
+          <form class="subscribe__form" data-subscribe novalidate>
+            <label class="visually-hidden" for="subscribe-email">Email</label>
+            <input
+              class="input"
+              type="email"
+              id="subscribe-email"
+              name="email"
+              placeholder="ваш@email.ru"
+              required
+              autocomplete="email"
+              data-i18n="subscribe.placeholder"
+            />
+            <button type="submit" class="btn btn--primary" data-i18n="subscribe.submit">Подписаться</button>
+
+            <label class="consent">
+              <input type="checkbox" name="consent" required />
+              <span data-i18n-html="subscribe.consentHtml">
+                Соглашаюсь с
+                <a href="/privacy.html" target="_blank" rel="noopener noreferrer">
+                  Политикой конфиденциальности
+                </a>
+                и обработкой email в соответствии с 152-ФЗ
+              </span>
+            </label>
+
+            <p class="subscribe__msg" data-subscribe-msg role="status"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contacts">
+      <div class="footer__flower" aria-hidden="true">
+        <svg width="28" height="28"><use href="#i-flower"/></svg>
+      </div>
+      <div class="container footer__inner">
+        <div class="footer__col">
+          <a href="#top" class="logo logo--light">
+            <span class="logo__mark" aria-hidden="true">
+              <svg width="20" height="20" aria-hidden="true"><use href="#i-flower"/></svg>
+            </span>
+            <span class="logo__text">Плюши</span>
+          </a>
+          <p class="footer__about" data-i18n="footer.about">
+            Авторская мастерская плюшевых игрушек. Шьём с любовью с 2020 года.
+          </p>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__title" data-i18n="footer.contacts">Контакты</h4>
+          <ul class="footer__list">
+            <li><a href="mailto:hello@plushi.ru">hello@plushi.ru</a></li>
+            <li><a href="tel:+74950000000">+7 (495) 000-00-00</a></li>
+            <li data-i18n="footer.schedule">пн–вс, 10:00–20:00</li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__title" data-i18n="footer.socials">Соцсети</h4>
+          <ul class="footer__socials">
+            <li><a href="#" aria-label="Telegram" data-i18n-aria="footer.telegram">TG</a></li>
+            <li><a href="#" aria-label="Instagram" data-i18n-aria="footer.instagram">IG</a></li>
+            <li><a href="#" aria-label="ВКонтакте" data-i18n-aria="footer.vk">VK</a></li>
+            <li><a href="#" aria-label="Pinterest" data-i18n-aria="footer.pinterest">PT</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer__legal">
+        <p data-i18n-html="footer.legalHtml">
+          Нажимая кнопки «Подписаться», «В корзину» или «Оформить заказ», вы
+          соглашаетесь с
+          <a href="/privacy.html">Политикой конфиденциальности</a>
+          и обработкой персональных данных в соответствии со
+          <strong>152-ФЗ</strong>. Мы не передаём ваши данные третьим лицам
+          без согласия.
+        </p>
+      </div>
+      <div class="container footer__bottom">
+        <span data-i18n="footer.rights">© 2020–2026 «Плюши». Все права защищены.</span>
+        <a href="/privacy.html" data-i18n="footer.privacyLink">Политика конфиденциальности</a>
+        <a href="#" data-open-data-notice data-i18n="footer.dataNotice">Сведения о сборе данных</a>
+      </div>
+    </footer>
+
+    <aside
+      class="cart-drawer"
+      data-cart-drawer
+      aria-hidden="true"
+      aria-label="Корзина"
+      data-i18n-aria="cart.title"
+    >
+      <div class="cart-drawer__overlay" data-cart-close></div>
+      <div class="cart-drawer__panel">
+        <header class="cart-drawer__head">
+          <h3 data-i18n="cart.title">Ваша корзина</h3>
+          <button
+            type="button"
+            class="cart-drawer__close"
+            data-cart-close
+            aria-label="Закрыть корзину"
+            data-i18n-aria="cart.close"
+          >
+            <svg width="20" height="20" aria-hidden="true"><use href="#i-close"/></svg>
+          </button>
+        </header>
+
+        <div class="cart-drawer__body" data-cart-body>
+          <div class="cart-drawer__empty">
+            <svg width="64" height="64" aria-hidden="true"><use href="#i-bunny"/></svg>
+            <p data-i18n="cart.empty">Здесь пока пусто. Самое время выбрать друга</p>
+          </div>
+        </div>
+
+        <footer class="cart-drawer__foot" data-cart-foot hidden>
+          <div class="cart-drawer__total">
+            <span data-i18n="cart.total">Итого</span>
+            <strong data-cart-total>0 ₽</strong>
+          </div>
+
+          <form class="cart-drawer__form" data-cart-form novalidate>
+            <input
+              class="input"
+              name="name"
+              placeholder="Ваше имя"
+              required
+              autocomplete="name"
+              data-i18n="cart.nameLabel"
+            />
+            <input
+              class="input"
+              name="email"
+              type="email"
+              placeholder="Email"
+              required
+              autocomplete="email"
+              data-i18n="cart.emailLabel"
+            />
+            <input
+              class="input"
+              name="phone"
+              type="tel"
+              placeholder="Телефон (необязательно)"
+              autocomplete="tel"
+              data-i18n="cart.phoneLabel"
+            />
+            <textarea
+              class="input input--textarea"
+              name="note"
+              placeholder="Комментарий к заказу"
+              rows="2"
+              data-i18n="cart.noteLabel"
+            ></textarea>
+
+            <label class="consent consent--small">
+              <input type="checkbox" name="consent" required />
+              <span data-i18n-html="cart.consentHtml">
+                Соглашаюсь с
+                <a href="/privacy.html" target="_blank" rel="noopener noreferrer">
+                  Политикой конфиденциальности
+                </a>
+                и обработкой персональных данных по 152-ФЗ
+              </span>
+            </label>
+
+            <button type="submit" class="btn btn--primary btn--full" data-i18n="cart.order">
+              Оформить заказ
+            </button>
+            <p class="cart-drawer__msg" data-cart-msg role="status"></p>
+          </form>
+        </footer>
+      </div>
+    </aside>
+
+    <!-- Кнопка «наверх» -->
+    <button
+      type="button"
+      class="back-to-top"
+      data-back-to-top
+      aria-label="Наверх"
+      data-i18n-aria="nav.toTop"
+      hidden
+    >
+      <svg width="20" height="20" aria-hidden="true">
+        <use href="#i-arrow"/>
+      </svg>
+    </button>
+
+    <!-- Cookie-уведомление для соответствия требованиям РКН / 152-ФЗ -->
+    <div class="cookie-banner" data-cookie-banner hidden>
+      <div class="cookie-banner__inner container">
+        <p data-i18n-html="cookieBanner.textHtml">
+          Cookie нужны для корзины, избранного и обезличенной аналитики.
+          Продолжая пользоваться сайтом, вы соглашаетесь с
+          <a href="/privacy.html" target="_blank" rel="noopener noreferrer">
+            Политикой конфиденциальности
+          </a>.
+        </p>
+        <div class="cookie-banner__actions">
+          <button type="button" class="btn btn--primary btn--sm" data-cookie-accept data-i18n="cookieBanner.acceptAll">
+            Принять все
+          </button>
+          <button type="button" class="btn btn--ghost btn--sm" data-cookie-necessary data-i18n="cookieBanner.necessary">
+            Только необходимые
+          </button>
+          <button type="button" class="btn btn--ghost btn--sm" data-open-data-notice data-i18n="cookieBanner.details">
+            Подробнее
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script type="module" src="/assets/js/main.js"></script>
+  </body>
+</html>

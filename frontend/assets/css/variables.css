@@ -1,0 +1,70 @@
+:root {
+  /* Палитра — пастельные оттенки */
+  --color-pink: #ffd9e4;
+  --color-pink-soft: #ffe8ee;
+  --color-pink-deep: #f7b8cc;
+  --color-pink-glow: #ffc0d4;
+
+  --color-lavender: #e3d6ff;
+  --color-lavender-soft: #f0e9ff;
+  --color-lavender-deep: #c5b3f0;
+  --color-lavender-glow: #d4c2ff;
+
+  --color-mint: #cdf2e2;
+  --color-mint-soft: #e3f7ed;
+  --color-mint-deep: #a5e1c5;
+  --color-mint-glow: #b9ead2;
+
+  --color-peach: #ffe4d1;
+  --color-peach-deep: #ffc9a8;
+
+  --color-cream: #fff8f3;
+  --color-white: #ffffff;
+
+  /* Текст */
+  --color-text: #4a3f55;
+  --color-text-soft: #62566f;
+  --color-text-muted: #8e829c;
+
+  /* Поверхности и линии */
+  --color-bg: #fdf6fa;
+  --color-surface: #ffffff;
+  --color-border: rgba(122, 112, 138, 0.1);
+
+  /* Акцент */
+  --color-accent: #b48ce0;
+  --color-accent-deep: #9d72d1;
+  --color-rose: #e08aa8;
+
+  /* Тени — мягкие и пастельные */
+  --shadow-xs: 0 2px 6px rgba(180, 140, 224, 0.06);
+  --shadow-sm: 0 4px 12px rgba(180, 140, 224, 0.08);
+  --shadow-md: 0 12px 28px rgba(180, 140, 224, 0.14);
+  --shadow-lg: 0 24px 48px rgba(180, 140, 224, 0.18);
+  --shadow-glow-pink: 0 20px 50px -12px rgba(247, 184, 204, 0.6);
+  --shadow-glow-lavender: 0 20px 50px -12px rgba(197, 179, 240, 0.55);
+  --shadow-glow-mint: 0 20px 50px -12px rgba(165, 225, 197, 0.55);
+
+  /* Радиусы */
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  /* Типографика */
+  --font-display: 'Comfortaa', system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+
+  /* Тайминги */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast: 180ms;
+  --t-base: 280ms;
+  --t-slow: 480ms;
+
+  /* Контейнер */
+  --container: 1240px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --header-h: 72px;
+}

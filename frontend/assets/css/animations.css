@@ -1,0 +1,236 @@
+/* ============== Grain overlay ============== */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain { display: none; }
+}
+
+/* ============== Reveal on scroll ============== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0);
+}
+
+.reveal--left {
+  transform: translateX(-32px);
+}
+
+.reveal--left.is-visible {
+  transform: translateX(0);
+}
+
+.reveal--right {
+  transform: translateX(32px);
+}
+
+.reveal--right.is-visible {
+  transform: translateX(0);
+}
+
+.reveal--scale {
+  transform: scale(0.94);
+}
+
+.reveal--scale.is-visible {
+  transform: scale(1);
+}
+
+.section__head.reveal,
+.reviews__slider.reveal {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+}
+
+.reveal-stagger.is-visible > * {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0);
+}
+
+.reveal-stagger.is-visible > *:nth-child(1)  { transition-delay: 0ms;  }
+.reveal-stagger.is-visible > *:nth-child(2)  { transition-delay: 70ms; }
+.reveal-stagger.is-visible > *:nth-child(3)  { transition-delay: 140ms;}
+.reveal-stagger.is-visible > *:nth-child(4)  { transition-delay: 210ms;}
+.reveal-stagger.is-visible > *:nth-child(5)  { transition-delay: 280ms;}
+.reveal-stagger.is-visible > *:nth-child(6)  { transition-delay: 350ms;}
+.reveal-stagger.is-visible > *:nth-child(7)  { transition-delay: 420ms;}
+.reveal-stagger.is-visible > *:nth-child(8)  { transition-delay: 490ms;}
+.reveal-stagger.is-visible > *:nth-child(9)  { transition-delay: 560ms;}
+
+/* ============== Keyframes ============== */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-14px) rotate(2deg); }
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 38% 62% 56% 44% / 50% 40% 60% 50%; }
+  33%      { border-radius: 56% 44% 40% 60% / 60% 50% 50% 40%; }
+  66%      { border-radius: 44% 56% 60% 40% / 40% 60% 40% 60%; }
+}
+
+@keyframes morph-circle {
+  0%, 100% { border-radius: 50%; }
+  25%      { border-radius: 48% 52% 56% 44% / 52% 48% 52% 48%; }
+  50%      { border-radius: 52% 48% 44% 56% / 48% 52% 48% 52%; }
+  75%      { border-radius: 46% 54% 52% 48% / 54% 46% 54% 46%; }
+}
+
+@keyframes drift {
+  from { transform: translate(0, 0) rotate(0deg); }
+  to   { transform: translate(-8%, -8%) rotate(360deg); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes mesh-drift {
+  0%, 100% { transform: translate(0%, 0%) rotate(0deg); }
+  25%      { transform: translate(2%, -3%) rotate(2deg); }
+  50%      { transform: translate(-2%, 2%) rotate(-1deg); }
+  75%      { transform: translate(3%, 2%) rotate(1.5deg); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+@keyframes badge-bump {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.4); }
+  70%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+@keyframes cart-ping {
+  0%   { transform: scale(0.8); opacity: 0.8; }
+  40%  { transform: scale(1.35); opacity: 0.4; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes pop-in {
+  0%   { transform: scale(0.92); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%      { transform: scale(1.4); opacity: 0.5; }
+}
+
+@keyframes heart-pop {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.45); }
+  70%  { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+@keyframes sparkle-twinkle {
+  0%, 100% { opacity: 0;   transform: scale(0.6) rotate(0deg); }
+  50%      { opacity: 1;   transform: scale(1) rotate(180deg); }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes wave {
+  0%, 100% { d: path("M0,40 Q300,0 600,40 T1200,40 L1200,80 L0,80 Z"); }
+  50%      { d: path("M0,40 Q300,80 600,40 T1200,40 L1200,80 L0,80 Z"); }
+}
+
+.cart-line {
+  animation: pop-in 320ms var(--ease);
+}
+
+/* ============== Floating sparkles на странице ============== */
+.sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.sparkles .sparkle:nth-child(1) { top: 12%; left: 8%;  width: 16px; height: 16px; animation-delay: 0s;   }
+.sparkles .sparkle:nth-child(2) { top: 28%; right: 12%; width: 22px; height: 22px; animation-delay: 1.2s; }
+.sparkles .sparkle:nth-child(3) { bottom: 22%; left: 16%; width: 18px; height: 18px; animation-delay: 2.4s; color: var(--color-rose); }
+.sparkles .sparkle:nth-child(4) { bottom: 18%; right: 10%; width: 14px; height: 14px; animation-delay: 0.6s; }
+.sparkles .sparkle:nth-child(5) { top: 60%; left: 40%; width: 20px; height: 20px; animation-delay: 1.8s; color: var(--color-pink-deep); }
+.sparkles .sparkle:nth-child(6) { top: 8%; right: 30%; width: 12px; height: 12px; animation-delay: 3s; }
+
+/* ============== Counter ============== */
+.counter[data-counted] {
+  display: inline-block;
+}
+
+/* ============== Button magnetic effect (легкое смещение к курсору) ============== */
+@media (hover: hover) {
+  .magnet {
+    transition: transform 200ms var(--ease);
+  }
+}
+
+/* ============== GSAP overrides ============== */
+.has-gsap .hero__title-line,
+.has-gsap .hero__subtitle,
+.has-gsap .hero__actions,
+.has-gsap .hero__trust {
+  animation: none;
+}
+
+.has-gsap .hero__title-line {
+  transform: none;
+}
+
+.has-gsap .hero__subtitle,
+.has-gsap .hero__actions,
+.has-gsap .hero__trust {
+  opacity: 1;
+  transform: none;
+}
+
+.has-gsap .hero__art,
+.has-gsap .hero__float-card {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-gsap .hero__art,
+  .has-gsap .hero__float-card,
+  .has-gsap .hero__subtitle,
+  .has-gsap .hero__actions,
+  .has-gsap .hero__trust,
+  .has-gsap .hero__title-line {
+    opacity: 1;
+    transform: none;
+  }
+}

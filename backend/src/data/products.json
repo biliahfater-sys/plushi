@@ -1,0 +1,74 @@
+[
+  {
+    "id": "bunny-mia",
+    "category": "rabbits",
+    "name": "Кролик Мия",
+    "description": "Длинные уши, мягкий велюр и розовый бантик. Любит обнимашки.",
+    "price": 1890,
+    "image": "/assets/images/bunny-mia.jpg"
+  },
+  {
+    "id": "bunny-leo",
+    "category": "rabbits",
+    "name": "Кролик Лео",
+    "description": "Лавандовый малыш с вышитой улыбкой и длинными ушками.",
+    "price": 1990,
+    "image": "/assets/images/bunny-leo.jpg"
+  },
+  {
+    "id": "bunny-nora",
+    "category": "rabbits",
+    "name": "Крольчиха Нора",
+    "description": "Нежно-мятная, с шарфиком и круглыми пуговичками-глазками.",
+    "price": 2090,
+    "image": "/assets/images/bunny-nora.jpg"
+  },
+  {
+    "id": "bear-tom",
+    "category": "bears",
+    "name": "Мишка Том",
+    "description": "Классический медвежонок цвета пудры с шёлковым бантом.",
+    "price": 2290,
+    "image": "/assets/images/bear-tom.jpg"
+  },
+  {
+    "id": "bear-bella",
+    "category": "bears",
+    "name": "Мишка Белла",
+    "description": "Лавандовая медведица, набита экологичным холлофайбером.",
+    "price": 2490,
+    "image": "/assets/images/bear-bella.jpg"
+  },
+  {
+    "id": "bear-oskar",
+    "category": "bears",
+    "name": "Мишка Оскар",
+    "description": "Мятный мишка с вязаным свитером — обнимает крепче всех.",
+    "price": 2690,
+    "image": "/assets/images/bear-oskar.jpg"
+  },
+  {
+    "id": "cat-luna",
+    "category": "cats",
+    "name": "Котёнок Луна",
+    "description": "Сонная киса с закрытыми глазками и хвостом-бантиком.",
+    "price": 1990,
+    "image": "/assets/images/cat-luna.jpg"
+  },
+  {
+    "id": "cat-pixie",
+    "category": "cats",
+    "name": "Котёнок Пикси",
+    "description": "Лавандовая шалунья с розовыми лапками и бабочкой на шее.",
+    "price": 2150,
+    "image": "/assets/images/cat-pixie.jpg"
+  },
+  {
+    "id": "cat-mochi",
+    "category": "cats",
+    "name": "Котёнок Моти",
+    "description": "Мятный пушистик с круглыми щёчками — самый мягкий из всех.",
+    "price": 2290,
+    "image": "/assets/images/cat-mochi.jpg"
+  }
+]

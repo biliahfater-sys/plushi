@@ -1,0 +1,35 @@
+# Dependencies
+backend/node_modules/
+web/node_modules/
+node_modules/
+
+# Environment variables (keep .env.example as template)
+.env
+.env.local
+backend/.env
+backend/.env.local
+web/.env
+web/.env.local
+
+# Build output
+web/dist/
+dist/
+
+# Logs
+*.log
+backend/server.log
+
+# Local tooling and QA artifacts
+.playwright-mcp/
+.claude/
+.vscode/
+.idea/
+
+# Temporary / reference files
+tmp_images/
+screenshot-*.png
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
